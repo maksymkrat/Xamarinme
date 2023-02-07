@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Xamarinme.Xamarin.Essentials.FileSystem.Extensions</AssemblyName>
+    <RootNamespace>XamarinmeXamarinEssentialsFileSystemExtensions</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+</Project>
