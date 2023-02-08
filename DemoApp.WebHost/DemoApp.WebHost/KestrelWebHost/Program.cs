@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using DemoApp.WebHost.Managers;
 using Xamarinme;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ namespace DemoApp.WebHost.KestrelWebHost
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddSingleton<IHostLifetime, ConsoleLifetimePatch>();
+                    services.AddSingleton<IReceiptManager, ReceiptManager>();
                 })
                 .UseKestrel(options =>
                 {
