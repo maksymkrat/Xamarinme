@@ -3,15 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DemoApp.WebHost.MainPage">
 
-    <StackLayout>
+    <StackLayout >
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="WebHost Demo" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <StackLayout VerticalOptions="CenterAndExpand" Padding="10">
+            
             <Label FontSize="16" Text="Kestrel server is running on IP address: "/>
             <Label x:Name="Ip" Text="" FontAttributes="Bold"/>
+            
             <Label Padding="0,20,0,0" FontSize="16" Text="You can reach it at: "/>
             <Label x:Name="Url" Text="http://" FontAttributes="Bold"/>
+            
+            <Label Padding="0,20,0,0" FontSize="16" Text="Screen Size: "/>
+            <Label x:Name="Size" Text="" FontAttributes="Bold"/>
+            
+            <Button Padding="0,20,0,0" x:Name="nextPage" Text="next page"></Button>
+            <Button Padding="0,20,0,0" Clicked="Button_OnClicked" Text="exit"></Button>
         </StackLayout>
     </StackLayout>
 

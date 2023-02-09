@@ -20,7 +20,7 @@ namespace DemoApp.WebHost.KestrelWebHost
         
         
         private static readonly byte[] _helloWorldBytes = Encoding.UTF8.GetBytes(
-            "Hello rom Kestrel serverrr");
+            "Hello from Kestrel server");
         
         private static WebApp instance = new WebApp();
         private static WebApp Instance
@@ -28,9 +28,44 @@ namespace DemoApp.WebHost.KestrelWebHost
             get { return instance; }
         }
 
+        private ReceiptModel _receipt;
+        private ReceiptItemModel _newItem;
+        
+
         public WebApp()
         {
             _receiptManager = new ReceiptManager();
+            
+            //Create Receipt
+
+            var item1 = new ReceiptItemModel();
+            item1.Name = "Ssome product1";
+            item1.Id = 11;
+            item1.Quantity = 3;
+            item1.Price = 25;
+        
+            var item2 = new ReceiptItemModel();
+            item2.Name = "Ssome product2";
+            item2.Id = 22;
+            item2.Quantity = 1;
+            item2.Price = 40;
+        
+            var receipt = new ReceiptModel();
+            receipt.products = new List<ReceiptItemModel>();
+            receipt.products.Add(item1);
+            receipt.products.Add(item2);
+            receipt.DateTime = DateTime.Now;
+            receipt.Suma = 115;
+            _receipt = receipt;
+            
+            var newItem = new ReceiptItemModel();
+            item1.Name = "Ssome product3";
+            item1.Id = 33;
+            item1.Quantity = 1;
+            item1.Price = 5;
+            
+            _newItem = newItem;
+
         }
 
      
@@ -41,6 +76,7 @@ namespace DemoApp.WebHost.KestrelWebHost
             try
             {
                 Instance.RecognizeMethod(httpContext);
+                
             }
             catch (Exception e)
             {
@@ -65,19 +101,19 @@ namespace DemoApp.WebHost.KestrelWebHost
             switch (context.Request.Path)
             {
                 case StartReceipt:
-                    var value = (ReceiptModel)DeserializeBody(context);
+                    var value = _receipt;
                     _receiptManager.StartReceipt(value);
                     break;
                 case AddItemToReceipt:
-                    var value1 = (ReceiptItemModel)DeserializeBody(context);
+                    var value1 = _newItem;
                     _receiptManager.AddItemToReceipt(value1);
                     break;
                 case RemoveItemInReceipt:
-                    var value2 = (Int32)DeserializeBody(context);
+                    var value2 = 33;
                     _receiptManager.RemoveItemInReceipt(value2);
                     break;
                 case FinishReceipt:
-                    var value3 = (bool)DeserializeBody(context);
+                    var value3 = true;
                     _receiptManager.FinishReceipt(value3);
                     break;
                 

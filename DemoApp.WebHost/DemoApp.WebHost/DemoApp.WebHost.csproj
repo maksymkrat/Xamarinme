@@ -20,4 +20,8 @@
     <PackageReference Include="Xamarinme.Configuration" Version="1.0.2" />
     <PackageReference Include="Xamarinme.WebHostPatch" Version="1.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Activities" />
+  </ItemGroup>
 </Project>
