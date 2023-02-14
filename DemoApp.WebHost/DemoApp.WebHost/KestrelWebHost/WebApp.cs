@@ -20,7 +20,7 @@ namespace DemoApp.WebHost.KestrelWebHost
         
         
         private static readonly byte[] _helloWorldBytes = Encoding.UTF8.GetBytes(
-            "Hello from Kestrel server");
+            "Hello from  server");
         
         private static WebApp instance = new WebApp();
         private static WebApp Instance
